@@ -44,8 +44,8 @@ __authors__ = ['Fredrik Thulin']
 __all__ = [
 ]
 
-_consonants = 'bdfghjklmnprstvz'
-_vowels = 'aiou'
+CONSONANTS = 'bdfghjklmnprstvz'
+VOWELS = 'aiou'
 
 
 def from_int(data):
@@ -63,10 +63,10 @@ def from_int(data):
     while data > 0 or not res:
         for j in range(5):
             if not j % 2:
-                res += _consonants[(data & 0xf)]
+                res += CONSONANTS[(data & 0xf)]
                 data >>= 4
             else:
-                res += _vowels[(data & 0x3)]
+                res += VOWELS[(data & 0x3)]
                 data >>= 2
         if data > 0:
             res += '-'
@@ -92,11 +92,11 @@ def to_int(data):
         for j in range(5):
             try:
                 if not j % 2:
-                    res <<= 4;
-                    res |= _consonants.index(part[j])
+                    res <<= 4
+                    res |= CONSONANTS.index(part[j])
                 else:
                     res <<= 2
-                    res |= _vowels.index(part[j])
+                    res |= VOWELS.index(part[j])
             except ValueError:
                 raise ValueError('Unknown character \'{!s}\' in proquint'.format(part[j]))
     return res
