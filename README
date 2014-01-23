@@ -1,0 +1,9 @@
+Python implementation of proquints.
+
+Proquints are PRO-nouncable QUINT-uplets of alternating unambiguous consonants
+and vowels. See http://arxiv.org/html/0901.4016 for more info.
+
+
+---
+
+Fredrik Thulin <fredrik@thulin.net>, 2014-01-23
