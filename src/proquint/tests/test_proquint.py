@@ -60,9 +60,31 @@ class TestProquint(unittest.TestCase):
         for (ip, expected) in self.test_vectors:
             self.assertEquals(expected, proquint.from_int(ip))
 
+    def test_generation_error1(self):
+        """
+        Test error generating proquint.
+        """
+        with self.assertRaises(TypeError):
+            proquint.from_int('123')
+
     def test_decoding_1(self):
         """
         Test decoding a proquint.
         """
         for (expected, pq) in self.test_vectors:
             self.assertEquals(expected, proquint.to_int(pq))
+
+    def test_decoding_error1(self):
+        """
+        Test error decoding bad proquint.
+        """
+        with self.assertRaises(TypeError):
+            proquint.to_int(1)
+        with self.assertRaises(ValueError):
+            proquint.to_int('abc-def')
+        with self.assertRaises(ValueError):
+            proquint.to_int('abcde')
+        with self.assertRaises(ValueError):
+            proquint.to_int('zuzuu')
+        with self.assertRaises(ValueError):
+            proquint.to_int('zuzzu')
