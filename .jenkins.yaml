@@ -1,4 +1,2 @@
 python_module: proquint
-publish_over_ssh:
-  - pypi.sunet.se
 clean_workspace: true
